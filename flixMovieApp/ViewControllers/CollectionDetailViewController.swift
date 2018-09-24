@@ -11,22 +11,12 @@ import UIKit
 class CollectionDetailViewController: UIViewController {
 
     @IBOutlet weak var backDropImageView: UIImageView!
-    
-    
     @IBOutlet weak var posterImageView: UIImageView!
-    
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
-    
     @IBOutlet weak var releaseLabel: UILabel!
-    
-    
-
     @IBOutlet weak var langLabel: UILabel!
-    
-    
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     var movie: [String: Any]?
     
@@ -38,6 +28,10 @@ class CollectionDetailViewController: UIViewController {
             releaseLabel.text = movie["release_date"] as? String
             overviewLabel.text = movie["overview"] as? String
             langLabel.text = movie["original_language"] as? String
+            if (langLabel.text == "en") {
+                langLabel.text = "English"
+            }
+            ratingLabel.text = "\(movie["vote_average"]!)"
             let backdropPathString = movie["backdrop_path"] as! String
             let posterPathString = movie["poster_path"] as! String
             let baseURLString = "https://image.tmdb.org/t/p/w500"
